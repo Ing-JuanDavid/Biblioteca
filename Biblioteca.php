@@ -1,38 +1,34 @@
 <?php
-class Biblioteca {
-    public $libros = [];
-    public $usuarios = [];
-    public $prestamos = [];
+require_once "config.php";
+require_once "Libro.php";
 
+
+class Biblioteca {
+    
     // Constructor que carga los datos desde los archivos planos
     public function __construct() {
-        $this->loadData();
+        $this->setData();
     }
 
     public function loadData() {
-
-        $this->libros = [];
-        $this->usuarios = [];
-        $this->prestamos = [];
-
         if (file_exists(ARCHIVO_LIBROS)) {
             $lineas = file(ARCHIVO_LIBROS, FILE_IGNORE_NEW_LINES);
             foreach ($lineas as $linea) {
-                $this->libros[] = Libro::fromLine($linea);
+                $this->libros[] = Libro::lineToLibro($linea);
             }
         }
 
         if(file_exists(ARCHIVO_USUARIOS)) {
             $lineas = file(ARCHIVO_USUARIOS, FILE_IGNORE_NEW_LINES);
             foreach ($lineas as $linea) {
-                $this->usuarios[] = Usuario::fromLine($linea);
+                $this->usuarios[] = Usuario::lineToUsuario($linea);
             }
         }
 
         if(file_exists(ARCHIVO_PRESTAMOS)) {
             $lineas = file(ARCHIVO_PRESTAMOS, FILE_IGNORE_NEW_LINES);
             foreach ($lineas as $linea) {
-                $this->prestamos[] = Prestamo::fromLine($linea);
+                $this->prestamos[] = Prestamo::lineToPrestamo($linea);
             }
         }
     }
@@ -79,11 +75,11 @@ class Biblioteca {
         $this->saveData();
     }
 
-    public function registerLoan($usuarioId, $libroId, $fecha) {
-        $prestamo = new Prestamo($usuarioId, $libroId, $fecha);
-        $this->prestamos[] = $prestamo;
-        $this->saveData();
-    }
+    // public function registerLoan($usuarioId, $libroId, $fecha) {
+    //     $prestamo = new Prestamo($usuarioId, $libroId, $fecha);
+    //     $this->prestamos[] = $prestamo;
+    //     $this->saveData();
+    // }
 
     public function getNameUser($usuarioId) {
         foreach ($this->usuarios as $usuario) {

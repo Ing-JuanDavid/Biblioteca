@@ -20,12 +20,7 @@ class Prestamo {
         }
     }
 
-    public function toLine(){
-        return($this->id."|".$this->idUsuario."|".$this->isbnLibro."|".$this->fecha);
-    }
-
-    public function lineToLibro($linea) {
-        $cadena = explode("|",$linea);
-        return new Prestamo(((int)$cadena[0]),((int)$cadena[1]),((int)$cadena[2]),$cadena[3]);
+    public function toString(){
+        echo($this->id.", ".$this->nombre.", ".$this->telefono);
     }
 }

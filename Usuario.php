@@ -18,14 +18,9 @@ class Usuario {
             return $this->$name;
         }
     }
-    
-    public function toLine(){
-        return($this->id."|".$this->nombre."|".$this->telefono);
-    }
 
-    public function lineToLibro($linea) {
-        $cadena = explode("|",$linea);
-        return new Usuario(((int)$cadena[0]),$cadena[1],((int)$cadena[2]));
+    public function toString(){
+        echo($this->id.", ".$this->nombre.", ".$this->telefono);
     }
 }
 

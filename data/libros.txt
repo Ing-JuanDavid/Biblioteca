@@ -1,4 +1,1 @@
-1|Cien años de soledad|Gabriel García Márquez|Literatura
-2|El Principito|Antoine de Saint-Exupéry|Fantasía
-3|La Odisea|Homero|Clásicos
-4|Programación en PHP|Luis Torres|Tecnología
+1|Harry Potter|Juan|Historia
