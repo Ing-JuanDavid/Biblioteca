@@ -23,7 +23,7 @@ class Usuario {
         return($this->id."|".$this->nombre."|".$this->telefono);
     }
 
-    public function lineToLibro($linea) {
+    public static function lineToUsuario($linea) {
         $cadena = explode("|",$linea);
         return new Usuario(((int)$cadena[0]),$cadena[1],((int)$cadena[2]));
     }

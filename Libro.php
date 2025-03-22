@@ -24,7 +24,7 @@ class Libro {
         return($this->isbn."|".$this->titulo."|".$this->fechaPublicacion."|".$this->autor);
     }
 
-    public function lineToLibro($linea) {
+    public static function lineToLibro($linea) {
         $cadena = explode("|",$linea);
         return new Libro(((int)$cadena[0]),$cadena[1],$cadena[2],$cadena[3]);
     }
