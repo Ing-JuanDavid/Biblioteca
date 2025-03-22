@@ -15,12 +15,17 @@ class Usuario {
 
     public function __get($name) {
         if(property_exists($this, $name)){
-            return $this->name;
+            return $this->$name;
         }
     }
+    
+    public function toLine(){
+        return($this->id."|".$this->nombre."|".$this->telefono);
+    }
 
-    public function toString(){
-        echo($this->id.", ".$this->nombre.", ".$this->telefono);
+    public function lineToLibro($linea) {
+        $cadena = explode("|",$linea);
+        return new Usuario(((int)$cadena[0]),$cadena[1],((int)$cadena[2]));
     }
 }
 
