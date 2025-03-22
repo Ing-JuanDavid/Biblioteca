@@ -6,10 +6,15 @@ class Biblioteca {
 
     // Constructor que carga los datos desde los archivos planos
     public function __construct() {
-        $this->setData();
+        $this->loadData();
     }
 
     public function loadData() {
+
+        $this->libros = [];
+        $this->usuarios = [];
+        $this->prestamos = [];
+
         if (file_exists(ARCHIVO_LIBROS)) {
             $lineas = file(ARCHIVO_LIBROS, FILE_IGNORE_NEW_LINES);
             foreach ($lineas as $linea) {
